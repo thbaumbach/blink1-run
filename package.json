@@ -1,0 +1,30 @@
+{
+  "name": "blink1-run",
+  "version": "0.1.0",
+  "description": "A tiny tool to hook up your blink(1) device to commands on your beloved shell.",
+  "main": "src/",
+  "scripts": {
+    "test": "echo test"
+  },
+  "bin": {
+    "blink1-run": "bin/blink1-run"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/thbaumbach/blink1-run"
+  },
+  "dependencies": {
+    "node-hid": "^0.4.0",
+    "node-blink1": "^0.2.1"
+  },
+  "keywords": [
+    "blink1",
+    "blink(1)",
+    "blink",
+    "shell",
+    "bash",
+    "command line"
+  ],
+  "author": "Thomas Baumbach <tom@xolo.pw>",
+  "license": "MIT"
+}

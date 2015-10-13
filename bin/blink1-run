@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+'use strict';
+
+//setup dependencies
+var Blink1 = require('node-blink1'),
+    Spawn = require('child_process').spawn;
+
+//connect to the first available device
+var blink1 = new Blink1();
+
+//starting slow strobe light
+blink1.writePatternLine(1000, 255, 255, 255, 1);
+blink1.writePatternLine(1000, 128, 128, 128, 2);
+blink1.playLoop(1, 2, 0);
+
+//collect data for the command (shell, arguments..) and execute!
+var shell = process.env.SHELL,
+    command = process.argv.slice(2).join(' '),
+    child = Spawn(shell, [ '-c', command ], { stdio: [0,0,0] });
+
+//bind the error event
+child.on('error', function (err) {
+  console.log('Failed to start child process: ' + err);
+});
+
+//bind the close event
+child.on('close', function (code) {
+    function onEnd() {
+        //cleanup see below
+        process.exit();
+    }
+    //unfortunately: playLoop's callback is not usable here :/
+    if (code === 0) {
+        //good/green
+        blink1.writePatternLine(flashQuality, 0, 255, 0, 1);
+        blink1.writePatternLine(flashQuality, 0, 128, 0, 2);
+        blink1.playLoop(1, 2, flashQuantity);
+    } else {
+        //bad/red
+        blink1.writePatternLine(flashQuality, 255, 0, 0, 1);
+        blink1.writePatternLine(flashQuality, 128, 0, 0, 2);
+        blink1.playLoop(1, 2, flashQuantity);
+    }
+    setTimeout(onEnd, 2 * flashQuantity * flashQuality + 10);
+});
+
+//set the variables/"constants"
+var flashQuantity = 5,
+    flashQuality = 200; //in ms
+
+//do some cleanup when the app is closing or ctrl+c event or uncaught exceptions
+function exitHandler(options, err) {
+    if (err) console.log(err.stack);
+    if (options.exit) {
+        //force exit
+        process.exit();
+    } else {
+        //cleanup
+        blink1.off();
+        blink1.close();
+    }
+}
+
+process.on('exit', exitHandler.bind(null, {exit:false}));
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
