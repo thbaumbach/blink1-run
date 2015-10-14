@@ -12,7 +12,7 @@ Most OS need you to be root (e.g. using `sudo`) to install a global npm package:
 $ npm -g install blink1-run
 ```
 
-blink1-run depends on [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/).
+blink1-run depends on [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/). Tested with `node v4.2.0` and `npm v2.14.7`.
 
 ## Usage
 
