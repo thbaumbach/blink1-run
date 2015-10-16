@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "A tiny tool to hook up your blink(1) device to commands on your beloved shell.",
   "homepage": "https://github.com/thbaumbach/blink1-run",
+  "readmeFilename": "README.md",
   "main": "src/",
   "scripts": {
     "test": "echo test"
