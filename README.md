@@ -16,37 +16,45 @@ blink1-run depends on [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/)
 
 ## Usage
 
-Hook up your blink(1) device and run:
+Prepend the `blink1-run` or `b1` alias to your command. Hook up your blink(1) device and run:
 
 ```sh
-$ blink1-run <your-command> <argument-1> <argument-2> ...
+$ b1 <your-command> <argument-1> <argument-2> ...
 ```
 
 examples:
 
 ```sh
-$ blink1-run sleep 5
+$ b1 sleep 5
 ```
 
 ```sh
-$ blink1-run echo simple/single commands can be used without quotation marks
+$ b1 echo simple/single commands can be used without quotation marks
 ```
 
 ```sh
-$ blink1-run "sleep 5 && echo very complex c0mmand && sleep 5"
+$ b1 "sleep 5 && echo very complex c0mmand && sleep 5"
 ```
 
 ```sh
-$ blink1-run "mysql -u mysqluser -p my_database < huge_database_dump.sql"
+$ b1 "mysql -u mysqluser -p my_database < huge_database_dump.sql"
 ```
 
 ```sh
-$ blink1-run cat flash_red_if_this_file_does_not_exist
+$ b1 cat flash_red_if_this_file_does_not_exist
 ```
 
 ## Todo
 
 * test more shells, commands and OS
+
+## Support
+
+Found a bug? Open an issue [here](https://github.com/thbaumbach/blink1-run/issues) on Github.
+
+Wanna help? Submit a pull request or contact me.
+
+Wanna tip me a beer? Use [Bitcoin](bitcoin:14pSD9AmuNhLDbGRXehxbhwzRSRrkpiAKg).
 
 ## License
 

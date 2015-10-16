@@ -1,21 +1,27 @@
 {
   "name": "blink1-run",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny tool to hook up your blink(1) device to commands on your beloved shell.",
+  "homepage": "https://github.com/thbaumbach/blink1-run",
   "main": "src/",
   "scripts": {
     "test": "echo test"
   },
+  "preferGlobal": true,
   "bin": {
-    "blink1-run": "bin/blink1-run"
+    "blink1-run": "bin/blink1-run",
+    "b1": "bin/blink1-run"
   },
   "repository": {
     "type" : "git",
     "url" : "https://github.com/thbaumbach/blink1-run"
   },
+  "bugs": {
+    "url": "https://github.com/thbaumbach/blink1-run/issues"
+  },
   "dependencies": {
-    "node-hid": "^0.4.0",
-    "node-blink1": "^0.2.1"
+    "node-hid": "^0.5.1",
+    "node-blink1": "^0.2.2"
   },
   "keywords": [
     "blink1",
